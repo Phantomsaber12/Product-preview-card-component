@@ -12,6 +12,11 @@
 --fw-Montserrat-bold: 700;
 --fw-Fraunces: 700;
 --fs-paragraph: 14px;
+
+ /* Responsive font sizes for desktop */
+  --fs-label:  clamp(0.7rem, 0.8vw, 0.9rem);  /* ~12–14px */
+  --fs-title:  clamp(1.5rem,  2.1vw ,  2.5rem);   /* ~32–40px */
+  --fs-body:   clamp(0.6rem, 0.9vw, 0.87rem);     /* ~14–16px */
 }
 
 *, *::before, *::after {
@@ -29,7 +34,7 @@ html , body{
 }
 
 .wrapper-grid {
-  width: 35%; /*don't used fixed px , make it responsive*/
+  width: 40%; /*don't used fixed px , make it responsive*/
   /*hegiht is auto according to content*/
   display: grid;
   grid-template-columns: 1fr 1fr; /*align-content stretch will strecth the hegiht of grid cells*/
@@ -56,7 +61,7 @@ html , body{
 display: flex;
 flex-direction: column;
 padding: 2rem 0 0 2rem; /*top and left padding*/
-gap: 1rem;
+gap: 1vw;
 justify-content: start;
 }
 .text_and_button > *{
@@ -67,42 +72,42 @@ width: 85%; /*imporatnt , responsive*/
   text-transform: uppercase;
   letter-spacing: 5px;  /* ⬅️ adds space between letters */
   font-family: var(--font-family-Montserrat);
-  font-size: 12px;
+  font-size: var(--fs-label);
   font-weight: var(--fw-Montserrat-light);
   color: var(--Grey);
 }
 .text_and_button .product-name{
   font-family: var(--font-family-Fraunces);
-  font-size: 32px;
+  font-size: var(--fs-title);
   font-weight: var(--fw-Fraunces);
   line-height: 1.0938; /*35px / 32px(font-size)*/
   color: var(--Black);
-  margin-top: 3px
+  margin-top: 2%;
 }
 .text_and_button .product-description{
   font-family: var(--font-family-Montserrat);
-  font-size: var(--fs-paragraph);
+  font-size: var(--fs-body);
   font-weight: var(--fw-Montserrat-light);
   line-height: 1.6; /*23px / 14px*/
   color: var(--Grey);
-  margin-top: 5px
+  margin-top: 2%;
 }
 
 .text_and_button .price{
   display: flex;
-  gap: 16px;
+  gap: clamp(0.5rem, 1.35vw , 1.5rem);
   align-items: center;
-   margin-top: 8px
+   margin-top: 4%;
 }
 .text_and_button .price .product-price-after{
    font-family: var(--font-family-Fraunces);
-  font-size: 32px;
+  font-size: var(--fs-title);
   font-weight: var(--fw-Fraunces);
   color: var(--Green-500);
 }
 .text_and_button .price .product-price-before{
    font-family: var(--font-family-Montserrat);
-   font-size: var(--fs-paragraph);
+   font-size: var(--fs-body);
   font-weight: var(--fw-Montserrat-light);
   text-decoration: line-through;
   color: var(--Grey);
@@ -110,11 +115,11 @@ width: 85%; /*imporatnt , responsive*/
 
 .text_and_button button{
   height: 48px;
-  margin-top: 12px; 
+  margin-top: 5%;
   background-color: var(--Green-500);
   font-family: var(--font-family-Montserrat);
    font-weight: var(--fw-Montserrat-bold);
-    font-size: var(--fs-paragraph);
+    font-size: var(--fs-body);
   color: var(--White);
     border: none; /*to remove default border put by browser for <button> element*/
   border-radius: 8px;
@@ -142,7 +147,7 @@ width: 85%; /*imporatnt , responsive*/
 
 
 
-@media (max-width:  378px){
+@media (max-width: 900px){
   .wrapper-grid {
   width: 90%;
   display: grid;
@@ -164,10 +169,16 @@ In both cases, your CSS selector .perfume-image img { … } applies to that <img
 
 .text_and_button {
   padding-bottom: 2rem;
+  gap: max(1rem , 4.267vw);
  }
  .text_and_button > *{
  width: 95%; /*imporatnt , responsive , so no overflow occur if the width decreased more than 280px*/
 }
+.text_and_button .product-type{font-size: clamp(0.75rem, 3.2vw, 0.875rem);} /*12px*/
+.text_and_button .product-name , .text_and_button .price .product-price-after{font-size: clamp(1.5rem , 7.467vw , 2.5rem);} /*32px*/
+.text_and_button .product-description , .text_and_button .price .product-price-before 
+, .text_and_button button {font-size: clamp(0.75rem , 3.73vw , 1rem);} /*14px*/
+
   .text_and_button button:active {
   background-color: var(--Green-700);
 }
