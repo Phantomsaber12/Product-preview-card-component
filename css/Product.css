@@ -1,0 +1,180 @@
+:root{
+--Green-500: hsl(158, 36%, 37%);
+--Green-700: hsl(158, 42%, 18%);
+--Black: hsl(212, 21%, 14%);
+--Grey: hsl(228, 12%, 48%);
+--Cream: hsl(30, 38%, 92%);
+--White: hsl(0, 0%, 100%);
+
+--font-family-Montserrat: 'Montserrat', sans-serif;
+--font-family-Fraunces: 'Fraunces', serif;
+--fw-Montserrat-light: 500;
+--fw-Montserrat-bold: 700;
+--fw-Fraunces: 700;
+--fs-paragraph: 14px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0;
+}
+
+html , body{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Cream);
+}
+
+.wrapper-grid {
+  width: 35%; /*don't used fixed px , make it responsive*/
+  /*hegiht is auto according to content*/
+  display: grid;
+  grid-template-columns: 1fr 1fr; /*align-content stretch will strecth the hegiht of grid cells*/
+  background-color: var(--White);
+  border-radius: 10px;
+  box-shadow: 0 25px 25px rgba(0, 0, 0, 0.05); 
+}
+.wrapper-grid > * {
+  min-width: 0;  /* imporatent --> lets both columns grid items shrink below auto */
+}
+
+/*.perfume-image will stretch its height and width duo to justify-items & align-items are stretch by default , 
+  grid items act as block elements (they can stretch to fill thier container/cell*/
+.perfume-image img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 0 0 10px;
+}
+
+
+.text_and_button{ /*will stretch to fill grid cell width & height*/
+display: flex;
+flex-direction: column;
+padding: 2rem 0 0 2rem; /*top and left padding*/
+gap: 1rem;
+justify-content: start;
+}
+.text_and_button > *{
+width: 85%; /*imporatnt , responsive*/
+}
+
+.text_and_button .product-type{
+  text-transform: uppercase;
+  letter-spacing: 5px;  /* ⬅️ adds space between letters */
+  font-family: var(--font-family-Montserrat);
+  font-size: 12px;
+  font-weight: var(--fw-Montserrat-light);
+  color: var(--Grey);
+}
+.text_and_button .product-name{
+  font-family: var(--font-family-Fraunces);
+  font-size: 32px;
+  font-weight: var(--fw-Fraunces);
+  line-height: 1.0938; /*35px / 32px(font-size)*/
+  color: var(--Black);
+  margin-top: 3px
+}
+.text_and_button .product-description{
+  font-family: var(--font-family-Montserrat);
+  font-size: var(--fs-paragraph);
+  font-weight: var(--fw-Montserrat-light);
+  line-height: 1.6; /*23px / 14px*/
+  color: var(--Grey);
+  margin-top: 5px
+}
+
+.text_and_button .price{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+   margin-top: 8px
+}
+.text_and_button .price .product-price-after{
+   font-family: var(--font-family-Fraunces);
+  font-size: 32px;
+  font-weight: var(--fw-Fraunces);
+  color: var(--Green-500);
+}
+.text_and_button .price .product-price-before{
+   font-family: var(--font-family-Montserrat);
+   font-size: var(--fs-paragraph);
+  font-weight: var(--fw-Montserrat-light);
+  text-decoration: line-through;
+  color: var(--Grey);
+}
+
+.text_and_button button{
+  height: 48px;
+  margin-top: 12px; 
+  background-color: var(--Green-500);
+  font-family: var(--font-family-Montserrat);
+   font-weight: var(--fw-Montserrat-bold);
+    font-size: var(--fs-paragraph);
+  color: var(--White);
+    border: none; /*to remove default border put by browser for <button> element*/
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px; /* spacing between icon and text */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.text_and_button button:hover{
+ background-color: var(--Green-700);
+}
+.text_and_button button:focus {
+  outline: 2px solid var(--Green-700);
+  outline-offset: 2px;
+}
+
+
+.attribution { position: absolute; bottom: 1rem; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+
+
+
+
+
+@media (max-width:  378px){
+  .wrapper-grid {
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr; /*align-content stretch will strecth the hegiht of grid cells*/
+  grid-template-rows: auto auto; /*important don't use fr because i didn't set fixed height , height depend on grid items
+  grid cells will fit-content which is grid items height thin align-content stretch will stretch to hegiht to fill grid container*/
+}
+
+/*On small screens (≤378px), the browser loads image-product-mobile.jpg into the <img>.
+On larger screens, it loads image-product-desktop.jpg into the same <img>.
+In both cases, your CSS selector .perfume-image img { … } applies to that <img>*/
+.perfume-image img{
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.text_and_button {
+  padding-bottom: 2rem;
+ }
+ .text_and_button > *{
+ width: 95%; /*imporatnt , responsive , so no overflow occur if the width decreased more than 280px*/
+}
+  .text_and_button button:active {
+  background-color: var(--Green-700);
+}
+
+
+.attribution {
+  display: none;
+}
+
+}
