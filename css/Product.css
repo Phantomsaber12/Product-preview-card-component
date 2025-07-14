@@ -126,7 +126,7 @@ width: 85%; /*imporatnt , responsive*/
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px; /* spacing between icon and text */
+  gap: 12px; /* spacing between icon and text , you can make it responsive better*/
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -147,7 +147,7 @@ width: 85%; /*imporatnt , responsive*/
 
 
 
-@media (max-width: 900px){
+@media (max-width: 56.25em){
   .wrapper-grid {
   width: 90%;
   display: grid;
